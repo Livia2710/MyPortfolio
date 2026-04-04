@@ -18,7 +18,7 @@ export default function Sobre(){
 
       {/* Por exemplo nessa section temos o flex flex-col md:flex-row, que significa assim, no mobile(Sem anda) fica no formato de coluna(Column), um embaixo do outro.
       Já na tela de tablet(md) ou para cima, pois vai sobrescrevendo conforme a tela aumenta, fica no formato row(linha),um do lado do outro */}
-      <section id="sobre" className="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center md:justify-between px-6 md:px-12 lg:px-40 py-20 gap-10 bg-transparent text-text ">
+      <section id="sobre" className="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center md:justify-between px-6 md:px-12 lg:px-40 py-20 gap-10 text-text ">
 
       {/* BLOCO DE TEXTO */}
       <div className="max-w-xl text-center md:text-left">
