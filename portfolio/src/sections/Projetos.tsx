@@ -1,46 +1,102 @@
-function CardProjeto(){
-    return(
-        <div className="min-w-[280px] md:min-w-[320px] bg-bg-secondary rounded-2xl p-6 flex flex-col justify-between hover:scale-105 transition shadow-[0_0_20px_rgba(0,0,0,0.4)]">
-            {/* Imagem(Quadrado) */}
-            <div className="h-40 bg-black/30 rounded-lg mb-4"/>
+import { useState } from "react";
 
-            {/* CONTEÚDO */}
-            <div>
-                <h3 className="font-title text-xl mb-2">Nome do Projeto</h3>
-                <p className="text-gray-400 text-sm mb-4">Pequena descrição do projeto, explicando o objetivo e o que foi feito.</p>
-                <p className="text-gray-500 text-xs mb-4">Criado para praticar X tecnologia e resolverY problema.</p>
+export default function Projetos() {
+    const [index, setIndex] = useState(0);
+
+    // Dados fake para testar a funcionalidade
+    const projetos = [
+        { 
+            id: 1, 
+            titulo: "E-commerce App", 
+            desc: "Uma loja completa com carrinho e pagamentos.",
+            detalhe: "Foco em performance e UX mobile-first.",
+            tags: ["React", "Node", "Stripe"]
+        },
+        { 
+            id: 2, 
+            titulo: "Dashboard Financeiro", 
+            desc: "Visualização de dados complexos com gráficos interativos.",
+            detalhe: "Utilizei bibliotecas de gráficos avançadas.",
+            tags: ["TypeScript", "Tailwind", "Chart.js"]
+        },
+        { 
+            id: 3, 
+            titulo: "Social Media API", 
+            desc: "Backend robusto para uma rede social moderna.",
+            detalhe: "Arquitetura limpa e escalável.",
+            tags: ["Node.js", "MongoDB", "Docker"]
+        },
+    ];
+
+    const next = () => setIndex((prev) => (prev + 1) % projetos.length);
+    const prev = () => setIndex((prev) => (prev - 1 + projetos.length) % projetos.length);
+
+    // Projeto que está aparecendo agora
+    const projetoAtual = projetos[index];
+
+    return (
+        <section id="projetos" className="min-h-screen px-6 md:px-12 lg:px-40 py-20 text-text">
+            <h2 className="font-title text-3xl md:text-4xl text-center mb-12 text-gold">
+                Meus Projetos
+            </h2>
+
+            {/* CONTAINER RELATIVO PARA AS SETAS */}
+            <div className="relative flex items-center justify-center max-w-6xl mx-auto">
+
+                {/* SETA ESQUERDA - Reposicionada para fora do card no desktop */}
+                <button onClick={prev} className="hidden md:flex absolute -left-4 md:-left-12 z-10 p-2 text-3xl text-gray-400 hover:text-gold transition">
+                    ←
+                </button>
+
+                {/* CARD PRINCIPAL (Agora dinâmico) */}
+                <div className="bg-bg-secondary rounded-2xl p-6 md:p-10 flex flex-col md:flex-row gap-8 w-full min-h-[400px] shadow-lg border border-white/5">
+                    
+                    {/* IMAGEM (50% no Desktop) */}
+                    <div className="w-full md:w-1/2 h-52 md:h-auto bg-black/40 rounded-xl flex items-center justify-center text-gray-600 italic">
+                        [ Preview: {projetoAtual.titulo} ]
+                    </div>
+
+                    {/* CONTEÚDO (50% no Desktop) */}
+                    <div className="flex flex-col justify-between md:w-1/2">
+                        <div>
+                            <h3 className="font-title text-3xl mb-3 text-gold">{projetoAtual.titulo}</h3>
+                            <p className="text-gray-300 text-base mb-4">{projetoAtual.desc}</p>
+                            <p className="text-gray-500 text-sm italic mb-6">{projetoAtual.detalhe}</p>
+                            
+                            {/* TAGS DINÂMICAS */}
+                            <div className="flex gap-2 flex-wrap">
+                                {projetoAtual.tags.map(tag => (
+                                    <span key={tag} className="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full border border-gold/30 text-gold/80">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+
+                        <a href="#" className="mt-8 bg-gold text-black font-bold px-8 py-3 w-fit rounded-full hover:scale-105 transition-transform text-center">
+                            Ver Projeto
+                        </a>
+                    </div>
+                </div>
+
+                {/* SETA DIREITA */}
+                <button onClick={next} className="hidden md:flex absolute -right-4 md:-right-12 z-10 p-2 text-3xl text-gray-400 hover:text-gold transition">
+                    →
+                </button>
             </div>
 
-            {/* TECNOLOGIAS */}
-            <div className="flex gap-2 flex-wrap mt-4">
-                <TechTag name="React"/>
-                <TechTag name="Tailwind"/>
-                <TechTag name="TypeScript"/>
+            {/* INDICADORES (Bolinhas) */}
+            <div className="flex justify-center gap-3 mt-10">
+                {projetos.map((_, i) => (
+                    <button
+                        key={i}
+                        onClick={() => setIndex(i)}
+                        className={`h-2 transition-all duration-300 rounded-full ${
+                            i === index ? "w-8 bg-gold" : "w-2 bg-gray-600"
+                        }`}
+                    />
+                ))}
             </div>
-        </div>
-    )
-}
-
-function TechTag({ name } : { name: string}){
-    return(
-        <span className="text-xs px-3 py-1 rounded-full border border-gold text-gold">{name}</span>
-    )
-}
-
-export default function Projetos(){
-    return(
-    <>
-    <section id="projetos" className="min-h-screen px-6 md:px-12 lg:px-40 py-20 text-text">
-    <h2 className="font-title text-3xl md:text-4xl text-center bg-gold-gradient bg-clip-text text-transparent text-shine-hover mb-12">Meus Projetos</h2>
-
-    {/* CARROSSEL */}
-    <div className="flex gap-6 overflow-x-auto scrollbar-hide pb-4">
-        {/* Cards fake por enquanto */}
-        <CardProjeto/>
-        <CardProjeto/>
-        <CardProjeto/>
-    </div>
-    </section>
-    </>
-    )
+        </section>
+    );
 }
