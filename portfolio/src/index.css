@@ -8,6 +8,7 @@
  o utilities é para classes pequenas(bg-black, text-white 
 */
 
+/* EFEITO SHINE */
 @layer utilities {
 
   /* efeito shine para botões*/
@@ -87,6 +88,18 @@
     background-position: right center;
   }
 }
+
+/* ELIMINAR O SCROLLBAR FEIO */
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE e Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+
 
 html, body, #root {
   height: 100%;
