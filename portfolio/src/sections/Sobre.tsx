@@ -42,14 +42,16 @@ export default function Sobre(){
         </p>
 
         {/* BOTÕES */}
-        <div className="mt-6 flex flex-wrap gap-4 justify-center md:justify-start">
-          <button className="shine border border-gold text-gold px-6 py-2 w-full sm:w-40 rounded-full hover:bg-gold hover:text-black transition">
+        <div className="mt-6 flex flex-wrap gap-4 justify-center text-center md:justify-start">
+          <a  href="https://github.com/Livia2710" target="_blank" rel="noreferrer"
+          className="shine border border-gold text-gold px-6 py-2 w-full sm:w-40 rounded-full hover:bg-gold hover:text-black transition">
             Github
-          </button>
+          </a>
 
-          <button className="shine border border-gold text-gold px-6 py-2 w-full sm:w-40 rounded-full hover:bg-gold hover:text-black transition">
+          <a href="https://www.linkedin.com/in/l%C3%ADvia-figueiredo/?skipRedirect=true" target="_blank" rel="noreferrer"
+          className="shine border border-gold text-gold px-6 py-2 w-full sm:w-40 rounded-full hover:bg-gold hover:text-black transition">
             Linkedin
-          </button>
+          </a>
         </div>
       </div>
       

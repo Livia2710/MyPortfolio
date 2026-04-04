@@ -66,6 +66,8 @@ export default function Projetos() {
                             {/* TAGS DINÂMICAS */}
                             <div className="flex gap-2 flex-wrap">
                                 {projetoAtual.tags.map(tag => (
+                                    // uppercadse faz o texto ficar em letras maiúsculas.
+                                    //tracking-widest define o maior espaçamento possível entre as letras
                                     <span key={tag} className="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full border border-gold/30 text-gold/80">
                                         {tag}
                                     </span>
@@ -73,7 +75,7 @@ export default function Projetos() {
                             </div>
                         </div>
 
-                        <a href="#" className="mt-8 bg-gold text-black font-bold px-8 py-3 w-fit rounded-full hover:scale-105 transition-transform text-center">
+                        <a href="#" className="shine border border-gold text-gold px-6 py-2 w-full sm:w-40 rounded-full hover:bg-gold hover:text-black transition text-center">
                             Ver Projeto
                         </a>
                     </div>
