@@ -1,10 +1,15 @@
 import { useState } from "react";
 
-function TechItem({ name }: { name: string }) {
+//Importando ícones
+import { FaHtml5, FaCss3Alt, FaJs, FaPython, FaJava } from "react-icons/fa6";
+import { SiTypescript, SiTailwindcss, SiVite, SiExpo, SiFigma } from "react-icons/si";
+import { FaGitAlt } from "react-icons/fa";
+
+function TechItem({ name, icon}: { name: string, icon: React.ReactNode }) {
   return (
     <div className="flex flex-col items-center gap-3 p-4 w-40 h-40 bg-bg-secondary rounded-xl hover:scale-105 transition">
       {/* futuramente você coloca ícone aqui */}
-      <div className="w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 bg-black rounded-full shine-border" />
+      <div className="text-4xl md:text-5xl lg:text-6xl text-gold shine-border">{icon}</div>
 
       <span className="text-sm text-center">
         {name}
@@ -53,23 +58,22 @@ export default function Tecnologias(){
         <div className="bg-bg-secondary rounded-2xl p-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 place-items-center">
             {aba === "linguagens" && (
             <>
-            <TechItem name="HTML"/>
-            <TechItem name="CSS"/>
-            <TechItem name="JavaScript"/>
-            <TechItem name="TypeScript"/>
-            <TechItem name="Python"/>
-            <TechItem name="Java"/>
+            <TechItem name="HTML" icon={<FaHtml5/>}/>
+            <TechItem name="CSS" icon={<FaCss3Alt/>}/>
+            <TechItem name="JavaScript" icon={<FaJs/>}/>
+            <TechItem name="TypeScript" icon={<SiTypescript/>}/>
+            <TechItem name="Python" icon={<FaPython/>}/>
+            <TechItem name="Java" icon={<FaJava/>}/>
             </>
         )}
 
         {aba === "ferramentas" && (
             <>
-            <TechItem name="Git"/>
-            <TechItem name="Figma"/>
-            <TechItem name="VS Code"/>
-            <TechItem name="Expo"/>
-            <TechItem name="Expo"/>
-            <TechItem name="Vite"/>
+            <TechItem name="Git" icon={<FaGitAlt/>}/>
+            <TechItem name="Figma" icon={<SiFigma/>}/>
+            <TechItem name="Tailwind" icon={<SiTailwindcss/>}/>
+            <TechItem name="Expo" icon={<SiExpo/>}/>
+            <TechItem name="Vite" icon={<SiVite/>}/>
             </>
         )}
         </div>

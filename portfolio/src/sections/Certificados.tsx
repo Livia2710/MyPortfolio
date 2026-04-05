@@ -90,6 +90,7 @@ const handleMouseUp = (e: React.MouseEvent) => {
                 className={`
                   absolute
                   transition-all duration-500 ease-in-out
+                  
                       
                   w-[320px] md:w-[520px]
                   h-[200px] md:h-[300px]
