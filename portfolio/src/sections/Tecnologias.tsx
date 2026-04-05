@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 //Importando ícones
 import { FaHtml5, FaCss3Alt, FaJs, FaPython, FaJava } from "react-icons/fa6";
@@ -20,8 +20,27 @@ function TechItem({ name, icon}: { name: string, icon: React.ReactNode }) {
 }
 
 export default function Tecnologias(){
+    const [visible, setVisible] = useState(false);
 
     const [aba, setAbas] = useState("linguagens");
+
+    useEffect(() => {
+  const handleScroll = () => {
+    const section = document.getElementById("tecnologias");
+    if (!section) return;
+
+    const rect = section.getBoundingClientRect();
+
+    if (rect.top < window.innerHeight - 100) {
+      setVisible(true);
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  handleScroll();
+
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
 
     return(
     <>
@@ -36,8 +55,7 @@ export default function Tecnologias(){
                 <button onClick={()=> setAbas("linguagens")} 
                 // rounded-t-xl aplica um arredondamento(rounded) extra largo(xl) apenas no topo(t)
                 //border-b-0 remove especificamente a borde de baixo(b = bottom)
-                className={`
-                px-8 py-3 rounded-t-xl transition 
+                className={`px-8 py-3 rounded-t-xl transition 
                 ${aba === "linguagens" ? "bg-bg-secondary text-gold " : "bg-transparent text-text border-transparent hover:text-gold"}`}
                 >
                     Linguagens
