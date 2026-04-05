@@ -10,7 +10,7 @@ import Trajetoria from './sections/Trajetoria';
 export default function App() {
   return (
     <>
-    <div className='bg-dark-gradient min-h-screen'>
+    <div className='bg-dark-gradient min-h-screen overflow-x-hidden'>
     <Header/>
     <Sobre/>
     <Trajetoria/>
