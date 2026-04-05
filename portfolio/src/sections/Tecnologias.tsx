@@ -7,9 +7,10 @@ import { FaGitAlt } from "react-icons/fa";
 
 function TechItem({ name, icon}: { name: string, icon: React.ReactNode }) {
   return (
-    <div className="flex flex-col items-center gap-3 p-4 w-40 h-40 bg-bg-secondary rounded-xl hover:scale-105 transition">
+    // group permite aplicar efeitos de hover nos elementos internos (ícone)
+    <div className="group flex flex-col items-center gap-3 p-4 w-40 h-40 bg-bg-secondary rounded-xl hover:scale-105 transition shine-border">
       {/* futuramente você coloca ícone aqui */}
-      <div className="text-4xl md:text-5xl lg:text-6xl text-gold shine-border">{icon}</div>
+      <div className="text-4xl md:text-5xl lg:text-6xl text-text group-hover:text-gold transition">{icon}</div>
 
       <span className="text-sm text-center">
         {name}
@@ -55,7 +56,7 @@ export default function Tecnologias(){
 
         {/* CONTEÚDO*/}
         {/* place-items-center centraliza elementos horizontalmente e verticalmente ao mesmo tempo*/}
-        <div className="bg-bg-secondary rounded-2xl p-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 place-items-center">
+        <div className="bg-bg-secondary rounded-2xl p-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 place-items-center transition-all duration-300 animate-[fadeIn_0.3s_ease]">
             {aba === "linguagens" && (
             <>
             <TechItem name="HTML" icon={<FaHtml5/>}/>

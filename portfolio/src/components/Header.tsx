@@ -10,7 +10,7 @@ export default function Header() {
         // Função que roda sempre que o usuário rola a página
         const handleScroll = () => {
             // Pegando todas as sections pelo id
-             const sections = ["sobre", "certificados", "tecnologias", "projetos"]
+             const sections = ["sobre", "certificados", "tecnologias", "projetos", "trajetoria"]
 
             //  Posição atual do scroll
             const scrollY = window.scrollY
@@ -57,6 +57,7 @@ export default function Header() {
         
         <a href="#sobre" className={linkClass("sobre")}>Sobre</a>
         <a href="#certificados" className={linkClass("certificados")}>Certificados</a>
+         <a href="#trajetoria" className={linkClass("trajetoria")}>Trajetória</a>
         <a href="#tecnologias" className={linkClass("tecnologias")}>Tecnologias</a>
         <a href="#projetos" className={linkClass("projetos")}>Projetos</a>
 

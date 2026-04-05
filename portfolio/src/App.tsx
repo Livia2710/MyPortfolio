@@ -4,6 +4,7 @@ import Sobre from "./sections/Sobre";
 import Certificados from './sections/Certificados';
 import Tecnologias from './sections/Tecnologias';
 import Projetos from './sections/Projetos';
+import Trajetoria from './sections/Trajetoria';
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
     <div className='bg-dark-gradient min-h-screen'>
     <Header/>
     <Sobre/>
+    <Trajetoria/>
     <Certificados/>
     <Tecnologias/>
     <Projetos/>

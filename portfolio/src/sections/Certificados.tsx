@@ -49,7 +49,10 @@ const handleMouseUp = (e: React.MouseEvent) => {
   if (!isDragging) return
 
   const diff = e.clientX - startX
-
+ // Calcula o quanto o mouse se moveu no eixo X
+// Se for positivo → arrastou pra direita
+// Se for negativo → arrastou pra esquerda
+// Usamos um limite (50px) pra evitar trocas acidentais
   if (diff > 50) prev()
   if (diff < -50) next()
 
@@ -77,11 +80,20 @@ const handleMouseUp = (e: React.MouseEvent) => {
         </button>
 
         {/* CARROSSEL (STACK) */}
-        <div className="relative w-full max-w-5xl h-[320px] flex items-center justify-center cursor-grab active:cursor-grabbing"
+
+        {/* Alguns "classes" que achei interessante
+         cursor-grab : icone do cursor de uma mão aberta
+         active:cursor-grabbing : Quando o usuario clica e segura(active) o ícone muda para um mão fechada(como se estivesse agarrando algo)
+        active:scale-[0.98], dá sensação de "pressionar ao arrastar" */}
+        <div className="relative w-full max-w-5xl h-[320px] flex items-center justify-center cursor-grab active:cursor-grabbing active:scale-[0.98]"
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}>
 
           {certificados.map((cer, i) => {
+            // Define a posição relativa do item atual ao item central
+            // 0 = item atual
+            // -1 = item à esquerda
+            // +1 = item à direita
             const position = i - index
 
             return (
@@ -100,14 +112,21 @@ const handleMouseUp = (e: React.MouseEvent) => {
                   shadow-lg
                 `}
                 style={{
+                  // Move os cards lateralmente baseado na posição
+                  // e reduz levemente o tamanho dos cards que não estão no centro
                   transform: `
                     translateX(${position * 90}px)
                     scale(${position === 0 ? 1 : 0.96})
                   `,
+                  // Controla a visibilidade:
+                  // centro = 100%
+                  // laterais = 70%
+                  // outros = invisíveis
                   opacity: 
                     position === 0 ? 1 : Math.abs(position) === 1 
                     ? 0.7 
                     : 0,
+                  // Garante que o card central fique na frente dos outros
                   zIndex: 10 - Math.abs(position),
                 }}
               >
@@ -132,37 +151,27 @@ const handleMouseUp = (e: React.MouseEvent) => {
       </div>
 
       {selected && (
-  <div
-    className="
-      fixed inset-0
-      bg-black/80
-      flex items-center justify-center
-      z-50
-    "
-    onClick={() => setSelected(null)}
-  >
+         <div
+          className={`
+            fixed inset-0
+            flex items-center justify-center
+            z-50
+            transition-opacity duration-300
+            ${selected ? "opacity-100 bg-black/80" : "opacity-0 pointer-events-none"}
+          `}
+          // Fecha apenas se clicar fora da imagem
+          onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            setSelected(null)
+          }
+        }}
+        >
+          
+    
 
     {/* IMAGEM */}
-    <img
-      src={selected}
-      className="
-        max-w-[90%]
-        max-h-[90%]
-        object-contain
-        rounded-md
-        shadow-2xl
-      "
-    />
-
-    {/* BOTÃO FECHAR */}
-    <button
-      className="
-        absolute top-6 right-6
-        text-white text-2xl
-      "
-    >
-      ✕
-    </button>
+    <img src={selected}
+     className="max-w-[90%] max-h-[90%] object-contain rounded-md shadow-2xl transition-transform duration-300 scale-100 animate-[zoomIn_0.3s_ease]"/>
 
   </div>
 )}
