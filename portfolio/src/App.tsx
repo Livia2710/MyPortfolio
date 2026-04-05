@@ -1,5 +1,6 @@
 // Importando os componentes e seções da página
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Sobre from "./sections/Sobre";
 import Certificados from './sections/Certificados';
 import Tecnologias from './sections/Tecnologias';
@@ -16,6 +17,7 @@ export default function App() {
     <Certificados/>
     <Tecnologias/>
     <Projetos/>
+    <Footer/>
     </div>
 
     </>

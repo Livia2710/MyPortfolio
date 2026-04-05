@@ -86,7 +86,7 @@ export default function Projetos() {
     const projetoAtual = projetos[index];
 
     useEffect(() => {
-  const handleScroll = () => {
+    const handleScroll = () => {
     const section = document.getElementById("projetos");
 
     if (!section) return;
@@ -131,7 +131,7 @@ export default function Projetos() {
                         muted
                         playsInline
                         className={`
-                        w-full md:w-1/2 h-52 md:h-auto flex items-center justify-center rounded-xl overflow-hidden transition-all duration-700 delay-200
+                        className="w-full h-full aspect-video flex items-center justify-center rounded-xl overflow-hidden transition-all duration-700 delay-200
                         ${projetoAtual.type === "mobile"
                             ? "object-contain bg-black p-4 md:w-[280px] md:h-[470px] md:rounded-2xl md:border md:border-white/10 md:shadow-xl md:shadow-black/40"
                             : "object-cover"}
